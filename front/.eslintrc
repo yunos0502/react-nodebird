@@ -17,6 +17,7 @@
   ],
   "plugins": [
     "import",
+    "react",
     "react-hooks"
   ],
   "rules": {
@@ -27,8 +28,17 @@
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "object-curly-newline": "off",
     "linebreak-style": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "arrow-body-style": [
+      "error",
+      "always"
+    ],
+    "jsx-quotes": [
+      2, "prefer-single"
+    ]
   }
 }
