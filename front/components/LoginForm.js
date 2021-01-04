@@ -1,6 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { Button, Form, Input } from 'antd';
 import Link from 'next/link';
+import styled from 'styled-components';
+
+const ButtonWrap = styled.div`
+  margin-top: 10px;
+`;
+
+// const style = useMemo(() => ({ marginTop: 10 }), []);
 
 const LoginForm = () => {
   const [id, setId] = useState('');
@@ -32,7 +39,7 @@ const LoginForm = () => {
           required
         />
       </div>
-      <div>
+      <ButtonWrap>
         <Button type='primary' htmlType='submit' loading={false}>
           로그인
         </Button>
@@ -41,7 +48,7 @@ const LoginForm = () => {
             <Button>회원가입</Button>
           </a>
         </Link>
-      </div>
+      </ButtonWrap>
     </Form>
   );
 };
