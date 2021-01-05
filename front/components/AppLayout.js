@@ -1,5 +1,4 @@
-import React from 'react';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -7,14 +6,14 @@ import { Input, Menu, Row, Col } from 'antd';
 
 const { Search } = Input;
 
-// import UserProfile from './UserProfile';
+import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
 
 const SearchInput = styled(Search)`
   vertical-align: center;
 `;
 const AppLayout = ({ children }) => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div>
@@ -41,8 +40,11 @@ const AppLayout = ({ children }) => {
       <Row gutter={8}>
         {/* xs : 모바일 / sm : 태블릿 / md : 작은 데스크탑 ... > n / 24 */}
         <Col xs={24} md={6}>
-          {/* {isLoggedIn ? <UserProfile /> : <LoginForm />} */}
-          <LoginForm />
+          {isLoggedIn ? (
+            <UserProfile setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <LoginForm setIsLoggedIn={setIsLoggedIn} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
