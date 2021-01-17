@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 import useInput from '../hooks/useInput';
 
-// const style = useMemo(() => ({ marginTop: 10 }), []);
+import { loginAction } from '../reducers/user';
 
 const ButtonWrap = styled.div`
   margin-top: 10px;
@@ -15,12 +16,18 @@ const FormWrap = styled(Form)`
   padding: 10px;
 `;
 
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = () => {
   const [id, onChangeId] = useInput('');
   const [password, onChangePassword] = useInput('');
+  const dispatch = useDispatch();
 
   const onSubmitForm = useCallback(() => {
-    setIsLoggedIn(true);
+    dispatch(
+      loginAction({
+        id,
+        password,
+      })
+    );
   }, [id, password]);
 
   return (
@@ -53,10 +60,6 @@ const LoginForm = ({ setIsLoggedIn }) => {
       </ButtonWrap>
     </FormWrap>
   );
-};
-
-LoginForm.propTypes = {
-  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
