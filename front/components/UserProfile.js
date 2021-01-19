@@ -5,10 +5,8 @@ import { Card, Avatar, Button } from 'antd';
 import { logoutAction } from '../reducers/user';
 
 const UserProfile = () => {
-  const { user } = useSelector((state) => state.user);
+  const { me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  console.log(user);
 
   const onLogOut = useCallback(() => {
     dispatch(logoutAction);
@@ -32,8 +30,8 @@ const UserProfile = () => {
       ]}
     >
       <Card.Meta
-        avatar={<Avatar>{user.nickname[0].toUpperCase()}</Avatar>}
-        title={user.nickname}
+        avatar={<Avatar>{me.nickname[0].toUpperCase()}</Avatar>}
+        title={me.nickname}
       />
       <Button onClick={onLogOut}>로그아웃</Button>
     </Card>
